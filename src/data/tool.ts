@@ -33,13 +33,13 @@ const tools: ToolsItemProps[] = [
     link: "/pestle",
   },
   {
-    name: "Susanto Analysis",
+    name: "Change Readiness Assessment",
     image: analysis,
     description:
       "In today's environment, changes are compulsory for an organization in order to survive and stay competitive. Although, planned change is intended to make the organization more effective and efficient, resistance from members of the organization are expected as they foresee potential threats that can affect their future (Alfonsus B. Susanto, 2008).",
     meta:
       "change readiness, perception toward change efforts, vision for change",
-    link: "/susanto",
+    link: "/readiness",
   },
   {
     name: "Type of change",
@@ -51,7 +51,8 @@ const tools: ToolsItemProps[] = [
   {
     name: "Stakeholder analysis",
     image: stakeholder,
-    description: "Change Characterised by Scale - (Nadler and Tushman 1986)",
+    description:
+      "Take time to determine all those involved in the changes and how important they are to driving or inhibiting the changes.",
     meta: "leadership, business, analysis",
     link: "/stakeholder",
   },

@@ -30,8 +30,8 @@ export default function Tools() {
       </Center>
       <StyledContent>
         <Item.Group>
-          {tools.map((tool) => (
-            <ToolsItem {...tool} />
+          {tools.map((tool, idx) => (
+            <ToolsItem key={idx} {...tool} />
           ))}
         </Item.Group>
       </StyledContent>
