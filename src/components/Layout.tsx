@@ -8,12 +8,14 @@ export interface LayoutProps {
 
 const StyledContent = styled.div`
   min-height: calc(100vh - 110px);
+  z-index: 1;
 `;
 
 const StyledMenu = styled.div`
   background: #ff7d00;
   position: sticky;
   top: 0;
+  z-index: 2;
 `;
 
 const Footer = styled.div`
