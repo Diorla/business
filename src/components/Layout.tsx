@@ -7,13 +7,25 @@ export interface LayoutProps {
 }
 
 const StyledContent = styled.div`
-  z-index: 1;
+  min-height: calc(100vh - 110px);
 `;
 
 const StyledMenu = styled.div`
   background: #ff7d00;
   position: sticky;
   top: 0;
+`;
+
+const Footer = styled.div`
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  height: 70px;
+  align-items: center;
+  font-size: 18px;
+  bottom: 0;
+  width: 100%;
 `;
 
 export default function Layout({ children, active }: LayoutProps) {
@@ -30,7 +42,11 @@ export default function Layout({ children, active }: LayoutProps) {
         </Menu>
       </StyledMenu>
       <StyledContent>{children}</StyledContent>
-      <div>Footer</div>
+      <Footer>
+        <div>
+          Made with <span style={{ color: "red" }}>❤</span> by Adeola Adedotun
+        </div>
+      </Footer>
     </div>
   );
 }
