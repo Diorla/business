@@ -1,5 +1,5 @@
 import Quiz from "./pages/Quiz";
-import Help from "./pages/Help";
+import Notes from "./pages/Notes";
 import Home from "./pages/Home";
 import Tools from "./pages/Tools";
 import NotFound from "./pages/NotFound";
@@ -18,8 +18,8 @@ const routes = [
     exact: true,
   },
   {
-    path: "/help",
-    component: Help,
+    path: "/notes",
+    component: Notes,
     permission: "public",
     exact: true,
   },

@@ -39,7 +39,7 @@ export default function Layout({ children, active }: LayoutProps) {
           <Menu.Menu position="right">
             <Menu.Item name="quiz" active={active === "quiz"} href="/quiz" />
             <Menu.Item name="tools" active={active === "tools"} href="/tools" />
-            <Menu.Item name="help" active={active === "help"} href="/help" />
+            <Menu.Item name="notes" active={active === "notes"} href="/notes" />
           </Menu.Menu>
         </Menu>
       </StyledMenu>
