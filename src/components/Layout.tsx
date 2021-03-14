@@ -14,10 +14,6 @@ const StyledMenu = styled.div`
   background: #ff7d00;
   position: sticky;
   top: 0;
-  & span {
-    display: inline-block;
-    margin-right: 4px;
-  }
 `;
 
 export default function Layout({ children, active }: LayoutProps) {
@@ -27,16 +23,9 @@ export default function Layout({ children, active }: LayoutProps) {
         <Menu secondary>
           <Menu.Item name="home" active={active === "home"} href="/" />
           <Menu.Menu position="right">
-            <span>
-              <Menu.Item
-                name="about"
-                active={active === "about"}
-                href="/about"
-              />
-            </span>
-            <span>
-              <Menu.Item name="help" active={active === "help"} href="/help" />{" "}
-            </span>
+            <Menu.Item name="quiz" active={active === "quiz"} href="/quiz" />
+            <Menu.Item name="tools" active={active === "tools"} href="/tools" />
+            <Menu.Item name="help" active={active === "help"} href="/help" />
           </Menu.Menu>
         </Menu>
       </StyledMenu>
