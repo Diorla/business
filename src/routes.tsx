@@ -6,13 +6,8 @@ import NotFound from "./pages/NotFound";
 import NoteFolder from "./pages/NoteFolder";
 import Dummy from "./pages/Dummy";
 import Note from "./pages/Note";
+import Admin from "./pages/Admin";
 
-/**
- * There are three types of permisions
- * 1. Public: any body could access it
- * 2. Private: only for signed in users
- * 3. Admin: only for me
- */
 const routes = [
   {
     path: "/",
@@ -54,6 +49,12 @@ const routes = [
     path: "/notes/:slug/:name",
     component: Note,
     permission: "public",
+    exact: true,
+  },
+  {
+    path: "/admin",
+    component: Admin,
+    permission: "admin",
     exact: true,
   },
   {

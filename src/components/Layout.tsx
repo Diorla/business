@@ -51,7 +51,7 @@ export default function Layout({ children, active }: LayoutProps) {
             <Menu.Item name="tools" active={active === "tools"} href="/tools" />
             <Menu.Item name="notes" active={active === "notes"} href="/notes" />
             {user ? (
-              <DropdownMenu imageUrl={user.photoURL} />
+              <DropdownMenu imageUrl={user.photoURL} uid={user.uid} />
             ) : (
               <Menu.Item
                 name="login"

@@ -1,7 +1,13 @@
 import { Dropdown, Icon } from "semantic-ui-react";
 import logout from "../firebase/logout";
 
-export default function DropdownMenu({ imageUrl }: { imageUrl: any }) {
+export default function DropdownMenu({
+  imageUrl,
+  uid,
+}: {
+  imageUrl: any;
+  uid: string;
+}) {
   const trigger = imageUrl ? (
     <img src={imageUrl} alt="Profile icon" />
   ) : (
@@ -10,9 +16,13 @@ export default function DropdownMenu({ imageUrl }: { imageUrl: any }) {
   return (
     <Dropdown trigger={trigger} pointing className="link item">
       <Dropdown.Menu>
-        <Dropdown.Header>Profile</Dropdown.Header>
-        <Dropdown.Item as="a" href="/edit">
-          Edit
+        {process.env.REACT_APP_ADMIN_UID === uid && (
+          <Dropdown.Item as="a" href="/admin">
+            Admin
+          </Dropdown.Item>
+        )}
+        <Dropdown.Item as="a" href="/profile">
+          Profile
         </Dropdown.Item>
         <Dropdown.Item as="a" href="/my_notes">
           My notes

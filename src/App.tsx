@@ -17,9 +17,31 @@ function App() {
   return (
     <Router>
       <Switch>
-        {routes.map(({ path, component, exact }, index) => (
-          <Route key={index} exact={exact} path={path} component={component} />
-        ))}
+        {routes.map(({ path, component, exact, permission }, index) => {
+          if (permission === "public")
+            return (
+              <Route
+                key={index}
+                exact={exact}
+                path={path}
+                component={component}
+              />
+            );
+          else if (
+            permission === "admin" &&
+            user &&
+            process.env.REACT_APP_ADMIN_UID === user.uid
+          )
+            return (
+              <Route
+                key={index}
+                exact={exact}
+                path={path}
+                component={component}
+              />
+            );
+          else return null;
+        })}
       </Switch>
     </Router>
   );
