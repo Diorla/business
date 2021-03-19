@@ -20,7 +20,7 @@ export default function Notes() {
     firebase
       .storage()
       .ref(`public/${slug}`)
-      .child(name)
+      .child(`${name}.md`)
       .getDownloadURL()
       .then((url) => {
         fetch(url)

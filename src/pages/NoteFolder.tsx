@@ -53,7 +53,7 @@ export default function Notes() {
         console.log({ notesError });
       });
   }, [slug]);
-  
+
   if (loading) return <div>Loading</div>;
   return (
     <Layout active="notes">
@@ -63,8 +63,11 @@ export default function Notes() {
       ) : (
         <StyledNotes>
           {files.map(({ name }) => (
-            <StyledLink to={`../notes/${slug}/${name}`} key={name}>
-              {name}
+            <StyledLink
+              to={`../notes/${slug}/${name.split(".")[0]}`}
+              key={name}
+            >
+              {name.split(".")[0]}
             </StyledLink>
           ))}
         </StyledNotes>
