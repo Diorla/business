@@ -19,6 +19,12 @@ const StyledMenu = styled.div`
   position: sticky;
   top: 0;
   z-index: 2;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  & > div {
+    flex: 1;
+  }
 `;
 
 const Footer = styled.div`
