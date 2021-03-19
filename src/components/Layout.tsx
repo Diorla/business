@@ -1,5 +1,8 @@
 import { Menu } from "semantic-ui-react";
 import styled from "styled-components";
+import { useAuthState } from "react-firebase-hooks/auth";
+import firebase from "../firebase/init";
+import DropdownMenu from "./DropdownMenu";
 
 export interface LayoutProps {
   children: React.ReactNode;
@@ -31,6 +34,7 @@ const Footer = styled.div`
 `;
 
 export default function Layout({ children, active }: LayoutProps) {
+  const [user] = useAuthState(firebase.auth());
   return (
     <div>
       <StyledMenu>
@@ -40,6 +44,15 @@ export default function Layout({ children, active }: LayoutProps) {
             <Menu.Item name="quiz" active={active === "quiz"} href="/quiz" />
             <Menu.Item name="tools" active={active === "tools"} href="/tools" />
             <Menu.Item name="notes" active={active === "notes"} href="/notes" />
+            {user ? (
+              <DropdownMenu imageUrl={user.photoURL} />
+            ) : (
+              <Menu.Item
+                name="login"
+                active={active === "login"}
+                href="/login"
+              />
+            )}
           </Menu.Menu>
         </Menu>
       </StyledMenu>
