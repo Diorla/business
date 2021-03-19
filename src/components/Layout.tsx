@@ -6,7 +6,7 @@ import DropdownMenu from "./DropdownMenu";
 
 export interface LayoutProps {
   children: React.ReactNode;
-  active: string;
+  active?: string;
 }
 
 const StyledContent = styled.div`
