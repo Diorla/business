@@ -10,7 +10,7 @@ export interface LayoutProps {
 }
 
 const StyledContent = styled.div`
-  min-height: calc(100vh - 110px);
+  min-height: calc(100vh - 130px);
   z-index: 1;
 `;
 
