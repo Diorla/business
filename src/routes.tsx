@@ -3,7 +3,9 @@ import Notes from "./pages/Notes";
 import Home from "./pages/Home";
 import Tools from "./pages/Tools";
 import NotFound from "./pages/NotFound";
+import NoteFolder from "./pages/NoteFolder";
 import Dummy from "./pages/Dummy";
+import Note from "./pages/Note";
 
 /**
  * There are three types of permisions
@@ -39,6 +41,18 @@ const routes = [
   {
     path: "/login", // Or sign up
     component: Dummy,
+    permission: "public",
+    exact: true,
+  },
+  {
+    path: "/notes/:slug",
+    component: NoteFolder,
+    permission: "public",
+    exact: true,
+  },
+  {
+    path: "/notes/:slug/:name",
+    component: Note,
     permission: "public",
     exact: true,
   },

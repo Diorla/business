@@ -12,7 +12,6 @@ import Layout from "./components/Layout";
 function App() {
   const [user, loading, error] = useAuthState(firebase.auth());
 
-  console.log({ user, loading, error });
   if (loading) return <Layout active="">Loading...</Layout>;
   if (error) return <Redirect to="/404" />;
   return (
