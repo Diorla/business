@@ -7,8 +7,20 @@ import NoteFolder from "./pages/NoteFolder";
 import Dummy from "./pages/Dummy";
 import Note from "./pages/Note";
 import Admin from "./pages/Admin";
+import tool from "./data/tool";
+
+// same as quiz
+const toolRoute = tool.map(({ link }) => {
+  return {
+    path: link,
+    permission: "public",
+    exact: true,
+    component: Dummy, // routeComponent[link]
+  };
+});
 
 const routes = [
+  ...toolRoute,
   {
     path: "/",
     component: Home,
@@ -59,4 +71,5 @@ const routes = [
   },
 ];
 
+console.log({ routes });
 export default routes;
