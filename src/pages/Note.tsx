@@ -18,6 +18,7 @@ const Markdown = styled.div`
 export default function Notes() {
   let { slug, name } = useParams<{ slug: string; name: string }>();
   const [file, setFile] = useState("");
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     firebase
       .storage()
@@ -31,6 +32,7 @@ export default function Notes() {
           })
           .then((text) => {
             setFile(marked(text));
+            setLoading(false);
           })
           .catch((fetchError) => console.log({ fetchError }));
       })
@@ -45,17 +47,19 @@ export default function Notes() {
       <div>
         <Header>
           <Breadcrumb>
-            <Breadcrumb.Section link href={`/notes/${slug}`}>
+            <Breadcrumb.Section href={`/notes/${slug}`}>
               {slug}
             </Breadcrumb.Section>
             <Breadcrumb.Divider>/</Breadcrumb.Divider>
             <Breadcrumb.Section active>{name}</Breadcrumb.Section>
           </Breadcrumb>
         </Header>
-        {file ? (
+        {loading ? (
+          <div>Loading</div>
+        ) : file ? (
           <Markdown dangerouslySetInnerHTML={{ __html: file }} />
         ) : (
-          <div>Loading</div>
+          <div>No content</div>
         )}
       </div>
     </Layout>

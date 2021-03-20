@@ -39,7 +39,6 @@ export default function Notes() {
   const [dir, setDir] = useState<dirProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedFile, setSelectedFile] = useState(new Blob());
-  const [active, setActive] = useState(false);
   const [dirName, setDirName] = useState("");
   const [fileName, setFileName] = useState("");
 
@@ -69,7 +68,6 @@ export default function Notes() {
 
   const selectFile = (e: any) => {
     setSelectedFile(e.target.files[0]);
-    setActive(true);
   };
 
   const uploadFile = (e: any) => {
@@ -79,6 +77,9 @@ export default function Notes() {
       .put(selectedFile)
       .then((url) => {
         console.log({ url });
+        setSelectedFile(new Blob());
+        setFileName("");
+        setDirName("");
       })
 
       .catch((fbError) => {
@@ -86,6 +87,13 @@ export default function Notes() {
       });
   };
 
+  const clearFields = () => {
+    setSelectedFile(new Blob());
+    setFileName("");
+    setDirName("");
+  };
+
+  const active = selectedFile && fileName && dirName;
   return (
     <Layout active="notes">
       <Header>Create notes</Header>
@@ -124,7 +132,7 @@ export default function Notes() {
             <Icon name="send" />
             Upload
           </Button>
-          <Button color="red" icon labelPosition="right">
+          <Button color="red" icon labelPosition="right" onClick={clearFields}>
             Cancel
             <Icon name="cancel" />
           </Button>

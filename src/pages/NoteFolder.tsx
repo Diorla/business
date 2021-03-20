@@ -44,7 +44,7 @@ export default function Notes() {
     <Layout active="notes">
       <Header>
         <Breadcrumb>
-          <Breadcrumb.Section link href="/notes">
+          <Breadcrumb.Section href="/notes">
             Notes
           </Breadcrumb.Section>
           <Breadcrumb.Divider>/</Breadcrumb.Divider>
