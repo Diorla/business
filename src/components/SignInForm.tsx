@@ -26,8 +26,7 @@ const LoginIn = ({ onClose }: { onClose: () => void }) => {
   });
 
   const login = () => {
-    loginWithEmail(credentials);
-    onClose();
+    loginWithEmail(credentials, onClose);
   };
 
   const { email, password } = credentials;
@@ -81,8 +80,7 @@ const SignUp = ({ onClose }: { onClose: () => void }) => {
   });
 
   const signUp = () => {
-    signUpWithEmail(credentials);
-    onClose();
+    signUpWithEmail(credentials, onClose);
   };
 
   const { email, password, repassword } = credentials;
@@ -146,7 +144,7 @@ const SignInForm = ({ open, onClose }: SignInFormProps) => {
   const [isNew, setIsNew] = useState(false);
   const title = isNew ? "Sign Up" : "Sign In";
   const login = () => {
-    loginWithGoogle();
+    loginWithGoogle(onClose);
   };
   return (
     <>
