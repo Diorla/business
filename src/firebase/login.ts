@@ -35,7 +35,7 @@ export function loginWithEmail({ email, password }: loginWithEmailProps) {
     .catch((loginErr) => console.log({ loginErr }));
 }
 
-export default function signUpWithEmail({
+export function signUpWithEmail({
   email,
   password,
 }: loginWithEmailProps) {

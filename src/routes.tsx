@@ -34,12 +34,6 @@ const routes = [
     exact: true,
   },
   {
-    path: "/login", // Or sign up
-    component: Dummy,
-    permission: "public",
-    exact: true,
-  },
-  {
     path: "/notes/:slug",
     component: NoteFolder,
     permission: "public",

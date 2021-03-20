@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { useAuthState } from "react-firebase-hooks/auth";
 import firebase from "../firebase/init";
 import DropdownMenu from "./DropdownMenu";
+import SignInForm from "./SignInForm";
+import { useState } from "react";
 
 export interface LayoutProps {
   children: React.ReactNode;
@@ -41,6 +43,7 @@ const Footer = styled.div`
 
 export default function Layout({ children, active }: LayoutProps) {
   const [user] = useAuthState(firebase.auth());
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
       <StyledMenu>
@@ -56,7 +59,7 @@ export default function Layout({ children, active }: LayoutProps) {
               <Menu.Item
                 name="login"
                 active={active === "login"}
-                href="/login"
+                onClick={() => setIsOpen(true)}
               />
             )}
           </Menu.Menu>
@@ -68,6 +71,10 @@ export default function Layout({ children, active }: LayoutProps) {
           Made with <span style={{ color: "red" }}>❤</span> by Adeola Adedotun
         </div>
       </Footer>
+      <SignInForm
+        open={isOpen}
+        onClose={() => setIsOpen(!isOpen)}
+      />
     </div>
   );
 }
