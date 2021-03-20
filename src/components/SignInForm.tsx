@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Icon, Input, Modal } from "semantic-ui-react";
-import { loginWithEmail, signUpWithEmail } from "../firebase/login";
+import {
+  loginWithEmail,
+  loginWithGoogle,
+  signUpWithEmail,
+} from "../firebase/login";
 import { Column, Header } from "./MyComponents";
 
 export interface SignInFormProps {
@@ -141,7 +145,9 @@ const SignUp = ({ onClose }: { onClose: () => void }) => {
 const SignInForm = ({ open, onClose }: SignInFormProps) => {
   const [isNew, setIsNew] = useState(false);
   const title = isNew ? "Sign Up" : "Sign In";
-
+  const login = () => {
+    loginWithGoogle();
+  };
   return (
     <>
       <Modal size="tiny" open={open} onClose={onClose}>
@@ -149,6 +155,12 @@ const SignInForm = ({ open, onClose }: SignInFormProps) => {
           <Header>{title}</Header>
         </Modal.Header>
         <Modal.Content>
+          <div>
+            <Button color="youtube" fluid onClick={login}>
+              <Icon name="google" /> Google
+            </Button>
+          </div>
+          <br />
           <Link to="#" onClick={() => setIsNew(!isNew)}>
             {isNew ? "Already a user?" : "New user?"}
           </Link>

@@ -86,7 +86,6 @@ export default function Notes() {
       });
   };
 
-  console.log({ dirName });
   return (
     <Layout active="notes">
       <Header>Create notes</Header>
