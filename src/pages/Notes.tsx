@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Layout from "../components/Layout";
+import { StyledLink } from "../components/MyComponents";
 import firebase from "../firebase/init";
 export interface dirProps {
   fullPath: string;
@@ -17,13 +17,6 @@ const Header = styled.h1`
   text-align: center;
 `;
 
-const StyledLink = styled(Link)`
-  margin: 6px;
-  &:hover {
-    color: #36689a;
-    text-decoration: underline;
-  }
-`;
 export default function Notes() {
   const [dir, setDir] = useState<dirProps[]>([]);
 

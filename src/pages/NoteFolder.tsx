@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Breadcrumb } from "semantic-ui-react";
-import styled from "styled-components";
 import Layout from "../components/Layout";
-import { Header } from "../components/MyComponents";
+import { Column, Header, StyledLink } from "../components/MyComponents";
 import firebase from "../firebase/init";
 
 export interface filesProps {
@@ -11,18 +10,6 @@ export interface filesProps {
   name: string;
 }
 
-const StyledNotes = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const StyledLink = styled(Link)`
-  margin: 6px;
-  &:hover {
-    color: #36689a;
-    text-decoration: underline;
-  }
-`;
 export default function Notes() {
   const [files, setFiles] = useState<filesProps[]>([]);
   const [loading, setLoading] = useState(true);
@@ -67,7 +54,7 @@ export default function Notes() {
       {!files.length ? (
         <div>Sorry, No notes found</div>
       ) : (
-        <StyledNotes>
+        <Column>
           {files.map(({ name }) => (
             <StyledLink
               to={`../notes/${slug}/${name.split(".")[0]}`}
@@ -76,7 +63,7 @@ export default function Notes() {
               {name.split(".")[0]}
             </StyledLink>
           ))}
-        </StyledNotes>
+        </Column>
       )}
     </Layout>
   );
