@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { Breadcrumb } from "semantic-ui-react";
 import styled from "styled-components";
 import Layout from "../components/Layout";
+import { Header } from "../components/MyComponents";
 import firebase from "../firebase/init";
 
 export interface filesProps {
@@ -12,10 +14,6 @@ export interface filesProps {
 const StyledNotes = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const Header = styled.h1`
-  text-align: center;
 `;
 
 const StyledLink = styled(Link)`
@@ -57,7 +55,15 @@ export default function Notes() {
   if (loading) return <div>Loading</div>;
   return (
     <Layout active="notes">
-      <Header>Notes</Header>
+      <Header>
+        <Breadcrumb>
+          <Breadcrumb.Section link href="/notes">
+            Notes
+          </Breadcrumb.Section>
+          <Breadcrumb.Divider>/</Breadcrumb.Divider>
+          <Breadcrumb.Section active>{slug}</Breadcrumb.Section>
+        </Breadcrumb>
+      </Header>
       {!files.length ? (
         <div>Sorry, No notes found</div>
       ) : (

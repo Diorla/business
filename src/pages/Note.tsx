@@ -4,6 +4,8 @@ import firebase from "../firebase/init";
 import marked from "marked";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
+import { Breadcrumb } from "semantic-ui-react";
+import { Header } from "../components/MyComponents";
 
 const Markdown = styled.div`
   padding: 4px;
@@ -41,6 +43,15 @@ export default function Notes() {
   return (
     <Layout active="notes">
       <div>
+        <Header>
+          <Breadcrumb>
+            <Breadcrumb.Section link href={`/notes/${slug}`}>
+              {slug}
+            </Breadcrumb.Section>
+            <Breadcrumb.Divider>/</Breadcrumb.Divider>
+            <Breadcrumb.Section active>{name}</Breadcrumb.Section>
+          </Breadcrumb>
+        </Header>
         {file ? (
           <Markdown dangerouslySetInnerHTML={{ __html: file }} />
         ) : (
